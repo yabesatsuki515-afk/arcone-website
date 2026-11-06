@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    @yield('page-title', config('app.name'))
+    @hasSection('page-title')
+        @yield('page-title') — ARC ONE（アークワン）
+    @else
+        ARC ONE（アークワン）｜ホームページ制作
+    @endif
 @endsection
 
 @section('content')

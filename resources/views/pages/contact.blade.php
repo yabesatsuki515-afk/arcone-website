@@ -2,6 +2,10 @@
 
 @section('page-title', 'お問い合わせ')
 
+@section('meta-description', 'ARC ONE（アークワン）への無料相談・お問い合わせ。ホームページ制作のご相談、お見積もりはこちらから。初回相談無料、1〜2営業日以内にご連絡いたします。')
+
+@section('canonical', route('contact'))
+
 @section('main')
     <section class="py-20 sm:py-28 lg:py-40">
         <div class="mx-auto max-w-[1400px] px-5 sm:px-6 lg:px-12">

@@ -2,6 +2,10 @@
 
 @section('page-title', 'よくある質問')
 
+@section('meta-description', 'ARC ONE（アークワン）のホームページ制作に関するよくある質問。料金、納期、準備物、公開後のサポートなど、お客様からよくいただくご質問にお答えします。')
+
+@section('canonical', route('faq'))
+
 @section('main')
     <section class="py-20 sm:py-28 lg:py-40">
         <div class="mx-auto max-w-[1100px] px-6 lg:px-12">

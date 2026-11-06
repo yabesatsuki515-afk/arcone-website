@@ -2,6 +2,10 @@
 
 @section('page-title', 'プライバシーポリシー')
 
+@section('meta-description', 'ARC ONE（アークワン）のプライバシーポリシー。個人情報の取り扱い、利用目的、安全管理措置について定めています。')
+
+@section('canonical', route('privacy'))
+
 @section('main')
     <section class="py-20 sm:py-28 lg:py-40">
         <article class="legal-doc reveal mx-auto max-w-[760px] px-5 sm:px-6 lg:px-0" data-reveal>

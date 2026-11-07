@@ -2,6 +2,10 @@
 
 @section('page-title', '制作実績')
 
+@section('meta-description', 'ARC ONE（アークワン）の制作実績。中小企業向けホームページ、LP、採用サイトなど、PCとスマホ両方の体験を丁寧に設計した実例をご紹介します。')
+
+@section('canonical', route('works'))
+
 @php
     $works = [
         [

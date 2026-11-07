@@ -1,6 +1,62 @@
 @extends('layouts.site')
 
-@section('page-title', config('app.name'))
+@section('title', 'ARC ONE（アークワン）｜ホームページ制作')
+
+@section('meta-description', 'ARC ONE（アークワン）は中小企業向けホームページ制作サービスです。まだ知られていない価値を、未来の出会いへ。高品質・低価格・短納期で御社の魅力を伝えるホームページをお届けします。')
+
+@section('canonical', url('/'))
+
+@section('structured-data')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ARC ONE（アークワン）",
+    "alternateName": ["ARCONE", "アークワン", "ARC ONE"],
+    "url": "https://arcone-web.jp/",
+    "description": "ARC ONE（アークワン）は中小企業向けホームページ制作サービスです。高品質・低価格・短納期で本物のホームページをお届けします。",
+    "inLanguage": "ja"
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ARC ONE",
+    "alternateName": ["ARCONE", "アークワン"],
+    "url": "https://arcone-web.jp/",
+    "logo": "https://arcone-web.jp/images/logo-arc-one.png",
+    "description": "中小企業の価値を伝える、本物のホームページ制作。",
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "url": "https://arcone-web.jp/contact",
+        "availableLanguage": "Japanese"
+    },
+    "sameAs": []
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ARC ONE（アークワン）",
+    "alternateName": ["ARCONE", "アークワン"],
+    "url": "https://arcone-web.jp/",
+    "logo": "https://arcone-web.jp/images/logo-arc-one.png",
+    "image": "https://arcone-web.jp/images/logo-arc-one.png",
+    "description": "中小企業向けホームページ制作サービス。高品質・低価格・短納期でフルカスタムのWebサイトを提供。",
+    "priceRange": "¥100,000〜",
+    "serviceType": ["ホームページ制作", "LP制作", "Webサイト制作", "ロゴ制作", "名刺制作"],
+    "areaServed": {
+        "@type": "Country",
+        "name": "Japan"
+    }
+}
+</script>
+@endsection
+
+@section('page-title', 'ARC ONE（アークワン）')
 
 @section('main')
     <style>

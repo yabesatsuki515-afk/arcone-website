@@ -162,9 +162,19 @@ export function initWave() {
     }
 
     function resize() {
-        const rect = canvas.getBoundingClientRect();
-        width = canvas.width = Math.max(1, Math.floor(rect.width));
-        height = canvas.height = Math.max(1, Math.floor(rect.height));
+        const viewportWidth = Math.max(
+            1,
+            Math.floor(window.visualViewport?.width ?? document.documentElement.clientWidth ?? window.innerWidth),
+        );
+        const viewportHeight = Math.max(
+            1,
+            Math.floor(window.visualViewport?.height ?? document.documentElement.clientHeight ?? window.innerHeight),
+        );
+
+        width = canvas.width = viewportWidth;
+        height = canvas.height = viewportHeight;
+        canvas.style.width = `${viewportWidth}px`;
+        canvas.style.height = `${viewportHeight}px`;
 
         if (height > width) {
             front.baseAmplitude = height / 6;
@@ -255,7 +265,8 @@ export function initWave() {
         }
     });
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
+    window.visualViewport?.addEventListener('resize', resize, { passive: true });
     resize();
     rafId = requestAnimationFrame(draw);
 

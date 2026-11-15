@@ -62,25 +62,35 @@
     <style>
         .fv {
             position: relative;
+            isolation: isolate;
+            display: grid;
+            place-items: center;
             min-height: 100svh;
+            min-height: 100dvh;
             overflow: hidden;
             background: #d7e8f5;
+            width: 100%;
         }
 
         .fv-town {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            inset: 0;
             z-index: 0;
-            width: 128%;
+            width: 100%;
+            height: 100%;
             max-width: none;
-            height: 128%;
             object-fit: cover;
             object-position: center 32%;
             pointer-events: none;
             filter: saturate(1.12) brightness(1.02) contrast(1.04);
-            transform: translate(-50%, -50%) scale(1.08);
-            animation: hero-bg-ken 22s var(--ease-in-out-smooth) infinite alternate;
+            transform: scale(1.06);
+            transform-origin: center center;
+        }
+
+        @media (min-width: 768px) {
+            .fv-town {
+                animation: hero-bg-ken 22s var(--ease-in-out-smooth) infinite alternate;
+            }
         }
 
         .fv-veil {
@@ -93,63 +103,111 @@
                 radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.35), transparent 60%);
         }
 
+        .fv .hero-aurora {
+            inset: 0;
+            animation: none;
+        }
+
+        @media (min-width: 768px) {
+            .fv .hero-aurora {
+                inset: -8%;
+                animation: hero-aurora-drift 14s var(--ease-in-out-smooth) infinite alternate;
+            }
+        }
+
         .fv-stage {
             position: relative;
             z-index: 4;
             display: flex;
+            width: 100%;
+            max-width: 1400px;
             min-height: 100svh;
+            min-height: 100dvh;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
-
-        .fv-copy {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-sizing: border-box;
+            padding:
+                calc(5.5rem + env(safe-area-inset-top, 0px))
+                max(1.25rem, env(safe-area-inset-right, 0px))
+                calc(4.5rem + env(safe-area-inset-bottom, 0px))
+                max(1.25rem, env(safe-area-inset-left, 0px));
+            margin-inline: auto;
             text-align: center;
         }
 
+        @media (min-width: 640px) {
+            .fv-stage {
+                padding-inline: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .fv-stage {
+                padding-inline: 3rem;
+            }
+        }
+
+        .fv-copy,
         .fv-copy-text {
             display: flex;
             width: 100%;
-            max-width: 52rem;
+            max-width: 40rem;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
+            margin-inline: auto;
+        }
+
+        @media (min-width: 768px) {
+            .fv-copy-text {
+                max-width: 52rem;
+            }
         }
 
         .fv-copy-text .hero-brand {
-            font-size: clamp(3.4rem, 14vw, 8.5rem);
-            margin-bottom: 1.1rem;
+            width: 100%;
+            font-size: clamp(2.6rem, 12vw, 8.5rem);
+            margin: 0 0 0.85rem;
+            overflow-wrap: anywhere;
         }
 
         .fv-copy-text .hero-reading {
-            margin: 0 0 1.35rem;
+            margin: 0 0 1.1rem;
+            padding-inline: 0.5rem;
             font-family: var(--font-sans);
-            font-size: clamp(0.72rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.7rem, 2.4vw, 0.9rem);
             font-weight: 700;
-            letter-spacing: 0.42em;
+            letter-spacing: 0.22em;
             color: var(--color-arcone-blue-deep);
+        }
+
+        @media (min-width: 640px) {
+            .fv-copy-text .hero-reading {
+                letter-spacing: 0.42em;
+            }
         }
 
         .fv-copy-text .hero-title,
         .fv-copy-text .hero-line {
             width: 100%;
+            max-width: 100%;
             text-align: center;
         }
 
         .fv-scroll {
             position: absolute;
-            bottom: 1.75rem;
+            bottom: calc(1.1rem + env(safe-area-inset-bottom, 0px));
             left: 50%;
             z-index: 4;
             display: flex;
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
             flex-direction: column;
             align-items: center;
             gap: 0.55rem;
             color: #12151c;
+            pointer-events: none;
         }
 
         .fv-scroll span {
@@ -188,19 +246,19 @@
         <div class="hero-aurora" aria-hidden="true"></div>
         <div class="hero-shine" aria-hidden="true"></div>
 
-        <div class="fv-stage mx-auto max-w-[1400px] px-5 pt-24 pb-16 sm:px-6 sm:pt-28 lg:px-12">
+        <div class="fv-stage">
             <div class="fv-copy">
                 <div class="fv-copy-text">
                     <p class="hero-brand" aria-label="ARC ONE">ARC ONE</p>
                     <p class="hero-reading hero-subtitle" aria-hidden="true">アークワン</p>
-                    <h1 class="hero-title w-full text-center text-[clamp(1.2rem,4.2vw,2.85rem)] leading-[1.75] text-arcone-ink">
+                    <h1 class="hero-title w-full text-center text-[clamp(1.05rem,4.4vw,2.85rem)] leading-[1.7] text-arcone-ink">
                         <span class="hero-line" style="--delay: 0.55s">まだ知られていない価値を、</span>
                         <span class="hero-line" style="--delay: 0.78s">未来の出会いへ</span>
                     </h1>
-                    <p class="hero-subtitle mt-5 max-w-xl text-center text-[0.82rem] leading-relaxed font-medium tracking-[0.04em] text-arcone-ink-soft sm:mt-6 sm:text-[1rem]">
+                    <p class="hero-subtitle mt-5 max-w-[22rem] text-center text-[0.82rem] leading-relaxed font-medium tracking-[0.02em] text-arcone-ink-soft sm:mt-6 sm:max-w-xl sm:text-[1rem] sm:tracking-[0.04em]">
                         中小企業の価値を伝える、本物のホームページ制作。
                     </p>
-                    <div class="hero-cta mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:mt-10">
+                    <div class="hero-cta mt-8 flex w-full flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-x-5 sm:gap-y-3">
                         <a href="{{ route('contact') }}" class="btn-primary">
                             無料相談する
                             <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">

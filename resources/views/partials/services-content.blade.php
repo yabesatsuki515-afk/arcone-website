@@ -914,7 +914,7 @@
         {{-- ② ARC ONEだからできること --}}
         <section class="py-24 sm:py-32 lg:py-40" aria-labelledby="services-strength-title">
             <div class="mx-auto max-w-[1100px] px-6 lg:px-12">
-                <div class="why-hero reveal" data-reveal>
+                <div class="why-hero reveal" data-reveal="scale">
                     <div class="why-hero-copy">
                         <h2 id="services-strength-title">
                             ARC ONEだから実現できる<br>
@@ -927,10 +927,10 @@
                     </div>
                 </div>
 
-                <p class="why-pill reveal" data-reveal>ホームページ制作が止まってしまう、3つのカベ</p>
+                <p class="why-pill reveal" data-reveal="up">ホームページ制作が止まってしまう、3つのカベ</p>
 
                 <div class="why-walls">
-                    <article class="why-wall reveal" data-reveal>
+                    <article class="why-wall reveal" data-reveal="skew-left">
                         <div class="why-illust" aria-hidden="true">
                             <svg viewBox="0 0 160 160" fill="none">
                                 <rect x="38" y="78" width="84" height="52" rx="6" stroke="#1a1d21" stroke-width="2"/>
@@ -950,7 +950,7 @@
                         <p>構成も文言もデザインも、判断が止まって前に進まない。テンプレートを見ても、自社の顔になる形が見えない。</p>
                     </article>
 
-                    <article class="why-wall reveal reveal-delay-1" data-reveal>
+                    <article class="why-wall reveal reveal-delay-1" data-reveal="up">
                         <div class="why-illust" aria-hidden="true">
                             <svg viewBox="0 0 160 160" fill="none">
                                 <rect x="28" y="70" width="48" height="62" rx="4" fill="#fff" stroke="#1a1d21" stroke-width="1.8"/>
@@ -970,7 +970,7 @@
                         <p>打ち合わせと修正に追われ、日常業務が止まる。自分で作る時間もなく、外注のやりとりも重荷になる。</p>
                     </article>
 
-                    <article class="why-wall reveal reveal-delay-2" data-reveal>
+                    <article class="why-wall reveal reveal-delay-2" data-reveal="skew-right">
                         <div class="why-illust" aria-hidden="true">
                             <svg viewBox="0 0 160 160" fill="none">
                                 <rect x="42" y="58" width="76" height="58" rx="5" fill="#fff" stroke="#1a1d21" stroke-width="2"/>
@@ -992,7 +992,10 @@
 
                 <div class="str-index">
                     @foreach ($strengths as $i => $item)
-                        <article class="str-row reveal {{ $i > 0 ? 'reveal-delay-'.min($i, 3) : '' }}" data-reveal>
+                        <article
+                            @class(['str-row', 'reveal', $i > 0 ? 'reveal-delay-'.min($i, 3) : ''])
+                            data-reveal="{{ $i % 2 === 0 ? 'left' : 'right' }}"
+                        >
                             <p class="str-num" aria-hidden="true">{{ str_pad((string) ($i + 1), 2, '0', STR_PAD_LEFT) }}</p>
                             <div>
                                 <h3>{{ $item['title'] }}</h3>

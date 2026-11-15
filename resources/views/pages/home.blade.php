@@ -9,8 +9,8 @@
 @section('structured-data')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@@context": "https://schema.org",
+    "@@type": "WebSite",
     "name": "ARC ONE（アークワン）",
     "alternateName": ["ARCONE", "アークワン", "ARC ONE"],
     "url": "https://arcone-web.jp/",
@@ -20,15 +20,15 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Organization",
+    "@@context": "https://schema.org",
+    "@@type": "Organization",
     "name": "ARC ONE",
     "alternateName": ["ARCONE", "アークワン"],
     "url": "https://arcone-web.jp/",
     "logo": "https://arcone-web.jp/images/logo-arc-one.png",
     "description": "中小企業の価値を伝える、本物のホームページ制作。",
     "contactPoint": {
-        "@type": "ContactPoint",
+        "@@type": "ContactPoint",
         "contactType": "customer service",
         "url": "https://arcone-web.jp/contact",
         "availableLanguage": "Japanese"
@@ -38,8 +38,8 @@
 </script>
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@@context": "https://schema.org",
+    "@@type": "ProfessionalService",
     "name": "ARC ONE（アークワン）",
     "alternateName": ["ARCONE", "アークワン"],
     "url": "https://arcone-web.jp/",
@@ -49,7 +49,7 @@
     "priceRange": "¥100,000〜",
     "serviceType": ["ホームページ制作", "LP制作", "Webサイト制作", "ロゴ制作", "名刺制作"],
     "areaServed": {
-        "@type": "Country",
+        "@@type": "Country",
         "name": "Japan"
     }
 }
@@ -64,7 +64,7 @@
             position: relative;
             min-height: 100svh;
             overflow: hidden;
-            background: #eaf4fb;
+            background: #d7e8f5;
         }
 
         .fv-town {
@@ -72,14 +72,15 @@
             top: 50%;
             left: 50%;
             z-index: 0;
-            width: 120%;
+            width: 128%;
             max-width: none;
-            height: 120%;
+            height: 128%;
             object-fit: cover;
-            object-position: center 35%;
+            object-position: center 32%;
             pointer-events: none;
-            filter: blur(5px) saturate(1.04) brightness(1.06);
-            transform: translate(-50%, -50%);
+            filter: saturate(1.12) brightness(1.02) contrast(1.04);
+            transform: translate(-50%, -50%) scale(1.08);
+            animation: hero-bg-ken 22s var(--ease-in-out-smooth) infinite alternate;
         }
 
         .fv-veil {
@@ -87,7 +88,9 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
-            background: linear-gradient(180deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,.18) 40%, rgba(255,255,255,.5) 100%);
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.18) 38%, rgba(234,244,251,.62) 100%),
+                radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,.35), transparent 60%);
         }
 
         .fv-stage {
@@ -110,10 +113,24 @@
         .fv-copy-text {
             display: flex;
             width: 100%;
-            max-width: 44rem;
+            max-width: 52rem;
             flex-direction: column;
             align-items: center;
             text-align: center;
+        }
+
+        .fv-copy-text .hero-brand {
+            font-size: clamp(3.4rem, 14vw, 8.5rem);
+            margin-bottom: 1.1rem;
+        }
+
+        .fv-copy-text .hero-reading {
+            margin: 0 0 1.35rem;
+            font-family: var(--font-sans);
+            font-size: clamp(0.72rem, 1.5vw, 0.9rem);
+            font-weight: 700;
+            letter-spacing: 0.42em;
+            color: var(--color-arcone-blue-deep);
         }
 
         .fv-copy-text .hero-title,
@@ -136,9 +153,10 @@
         }
 
         .fv-scroll span {
+            font-family: var(--font-display);
             font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.28em;
+            font-weight: 700;
+            letter-spacing: 0.32em;
         }
 
         .fv-scroll i {
@@ -146,6 +164,8 @@
             width: 1px;
             height: 1.6rem;
             background: #12151c;
+            transform-origin: top center;
+            animation: scroll-pulse 1.8s var(--ease-in-out-smooth) infinite;
         }
 
         .work-case--fill-screen .device-screen img {
@@ -165,17 +185,21 @@
     <section class="fv" aria-label="ヒーロー">
         <img class="fv-town" src="{{ asset('images/fv/sky-city.jpg') }}" alt="" width="1920" height="1080" decoding="async" aria-hidden="true">
         <div class="fv-veil" aria-hidden="true"></div>
+        <div class="hero-aurora" aria-hidden="true"></div>
+        <div class="hero-shine" aria-hidden="true"></div>
 
         <div class="fv-stage mx-auto max-w-[1400px] px-5 pt-24 pb-16 sm:px-6 sm:pt-28 lg:px-12">
             <div class="fv-copy">
                 <div class="fv-copy-text">
-                    <p class="hero-subtitle mb-4 text-center text-[0.75rem] leading-relaxed font-light tracking-[0.04em] text-arcone-ink sm:mb-5 sm:text-[0.95rem] md:text-lg">
+                    <p class="hero-brand" aria-label="ARC ONE">ARC ONE</p>
+                    <p class="hero-reading hero-subtitle" aria-hidden="true">アークワン</p>
+                    <h1 class="hero-title w-full text-center text-[clamp(1.2rem,4.2vw,2.85rem)] leading-[1.75] text-arcone-ink">
+                        <span class="hero-line" style="--delay: 0.55s">まだ知られていない価値を、</span>
+                        <span class="hero-line" style="--delay: 0.78s">未来の出会いへ</span>
+                    </h1>
+                    <p class="hero-subtitle mt-5 max-w-xl text-center text-[0.82rem] leading-relaxed font-medium tracking-[0.04em] text-arcone-ink-soft sm:mt-6 sm:text-[1rem]">
                         中小企業の価値を伝える、本物のホームページ制作。
                     </p>
-                    <h1 class="hero-title w-full text-center text-[clamp(1.15rem,4.6vw,3.35rem)] leading-[1.7] text-arcone-ink">
-                        <span class="hero-line" style="--delay: 0.2s">まだ知られていない価値を、</span>
-                        <span class="hero-line" style="--delay: 0.4s">未来の出会いへ</span>
-                    </h1>
                     <div class="hero-cta mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:mt-10">
                         <a href="{{ route('contact') }}" class="btn-primary">
                             無料相談する
@@ -239,12 +263,12 @@
 
     <section class="py-14 sm:py-28 lg:py-40" aria-label="制作実績">
         <div class="mx-auto max-w-[1400px] px-5 sm:px-6 lg:px-12">
-            <div class="reveal flex flex-col justify-between gap-6 text-center sm:gap-8 sm:text-left lg:flex-row lg:items-end" data-reveal>
-                <div>
+            <div class="flex flex-col justify-between gap-6 text-center sm:gap-8 sm:text-left lg:flex-row lg:items-end">
+                <div class="reveal" data-reveal="skew-left">
                     <p class="section-label">Works</p>
                     <h2 class="section-title mt-6">制作実績</h2>
                 </div>
-                <p class="max-w-sm text-[0.95rem] font-medium leading-[1.9] text-arcone-ink">
+                <p class="reveal max-w-sm text-[0.95rem] font-medium leading-[1.9] text-arcone-ink" data-reveal="skew-right">
                     戦略設計からデザイン・実装まで。PCとスマホ、両方の体験を丁寧に設計しています。
                 </p>
             </div>
@@ -271,11 +295,12 @@
                         :fill-screen="$work['fill_screen'] ?? false"
                         :reverse="$work['reverse']"
                         :coming-soon="$work['coming_soon'] ?? false"
+                        :reveal="! empty($work['reverse']) ? 'skew-right' : 'skew-left'"
                     />
                 @endforeach
             </div>
 
-            <div class="mt-16 text-center lg:mt-20">
+            <div class="mt-16 text-center lg:mt-20 reveal" data-reveal="up">
                 <a href="{{ route('works') }}" class="btn-outline">すべての実績を見る</a>
             </div>
         </div>
@@ -301,15 +326,20 @@
     {{-- FAQ --}}
     <section class="py-14 sm:py-28 lg:py-40" aria-label="よくある質問">
         <div class="mx-auto max-w-[1100px] px-5 sm:px-6 lg:px-12">
-            <div class="reveal text-center" data-reveal>
+            <div class="reveal text-center" data-reveal="scale">
                 <h2 class="section-title">よくある質問</h2>
             </div>
             <div class="faq-list mt-10 sm:mt-14">
                 @foreach ($faqs as $faq)
-                    <x-faq-item :question="$faq['q']" :paragraphs="$faq['paragraphs']" class="reveal" data-reveal />
+                    <x-faq-item
+                        :question="$faq['q']"
+                        :paragraphs="$faq['paragraphs']"
+                        class="reveal reveal-delay-{{ min($loop->index, 3) }}"
+                        data-reveal="{{ $loop->even ? 'skew-left' : 'skew-right' }}"
+                    />
                 @endforeach
             </div>
-            <div class="mt-10 text-center">
+            <div class="mt-10 text-center reveal" data-reveal="fade">
                 <a href="{{ route('faq') }}" class="btn-outline">すべての質問を見る</a>
             </div>
         </div>

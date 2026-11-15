@@ -9,14 +9,14 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
             fonts: [
-                bunny('Noto Sans JP', {
-                    weights: [300, 400, 500, 600, 700],
+                bunny('Zen Kaku Gothic New', {
+                    weights: [400, 500, 700, 900],
                 }),
-                bunny('Shippori Mincho', {
-                    weights: [500, 600, 800],
+                bunny('Zen Old Mincho', {
+                    weights: [400, 600, 700, 900],
                 }),
-                bunny('Noto Serif JP', {
-                    weights: [300, 400, 500, 600],
+                bunny('Syne', {
+                    weights: [600, 700, 800],
                 }),
             ],
         }),

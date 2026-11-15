@@ -8,6 +8,12 @@ function initScrollReveal() {
         return;
     }
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        elements.forEach((el) => el.classList.add('is-visible'));
+
+        return;
+    }
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
@@ -17,7 +23,7 @@ function initScrollReveal() {
                 }
             });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+        { threshold: 0.14, rootMargin: '0px 0px -8% 0px' },
     );
 
     elements.forEach((el) => observer.observe(el));

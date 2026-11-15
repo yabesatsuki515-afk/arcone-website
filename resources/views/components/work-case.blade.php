@@ -18,14 +18,18 @@
     'fillScreen' => false,
     'reverse' => false,
     'comingSoon' => false,
+    'reveal' => 'up',
 ])
 
-<article @class([
-    'work-case reveal',
-    'work-case--reverse' => $reverse,
-    'work-case--fill-screen' => $fillScreen,
-    'work-case--coming-soon' => $comingSoon,
-]) data-reveal>
+<article
+    @class([
+        'work-case reveal',
+        'work-case--reverse' => $reverse,
+        'work-case--fill-screen' => $fillScreen,
+        'work-case--coming-soon' => $comingSoon,
+    ])
+    data-reveal="{{ $reveal }}"
+>
     <div class="work-case-info">
         @if ($comingSoon)
             <p class="work-case-soon-badge">Coming Soon</p>
